@@ -20,6 +20,7 @@ class AuthRemoteDatasource {
       email: user.email,
       password: user.password,
     );
+    await token.user?.sendEmailVerification();
     authLocalDatasource.saveToken(token.toString());
     return user;
   }

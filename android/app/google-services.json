@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089736444525",
+    "project_id": "khamidov-trading",
+    "storage_bucket": "khamidov-trading.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089736444525:android:6682bd26bba95808a90d64",
+        "android_client_info": {
+          "package_name": "com.example.trading_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB76tmjt1B6AwYG6n1UitBPkwUIQxD4OCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

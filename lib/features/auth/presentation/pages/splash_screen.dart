@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:trading_app/core/constants/app_colors.dart';
 import 'package:trading_app/core/constants/app_images.dart';
 import 'package:trading_app/core/constants/app_textstyles.dart';
 import 'package:trading_app/core/extensions/num_extensions.dart';
+import 'package:trading_app/core/routes/route_names.dart';
 import 'package:trading_app/core/widgets/w_container_with_shadow.dart';
 import 'package:trading_app/core/widgets/w_scale_animation.dart';
 
@@ -16,7 +18,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    final mediaQueryHeight = MediaQuery.of(context).size.height;
     final mediaQueryWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColors.black,
@@ -66,12 +67,15 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
 
                 FastScaleButton(
+                  onTap: () {
+                    context.go(AppRoutesNames.register);
+                  },
                   child: WContainerWithShadow(
                     padding: EdgeInsets.zero,
                     width: mediaQueryWidth * 0.6,
                     height: 50,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(),
+                    border: Border.all(color: AppColors.blue.withOpacity(0.01)),
                     color: AppColors.blue.withOpacity(0.73),
                     child: Center(
                       child: Text(
@@ -84,23 +88,28 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 5,
-                  children: [
-                    Icon(
-                      Icons.login,
-                      color: AppColors.white.withOpacity(0.27),
-                      size: 26,
-                    ),
-                    Text(
-                      'KIRISH',
-                      style: AppTextStyles.s14w500.copyWith(
+                GestureDetector(
+                  onTap: () {
+                    context.go(AppRoutesNames.login);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 5,
+                    children: [
+                      Icon(
+                        Icons.login,
                         color: AppColors.white.withOpacity(0.27),
+                        size: 26,
                       ),
-                    ),
-                    100.height,
-                  ],
+                      Text(
+                        'KIRISH',
+                        style: AppTextStyles.s14w500.copyWith(
+                          color: AppColors.white.withOpacity(0.27),
+                        ),
+                      ),
+                      100.height,
+                    ],
+                  ),
                 ),
               ],
             ),

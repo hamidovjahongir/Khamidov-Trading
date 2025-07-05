@@ -8,6 +8,7 @@ class WTextField extends StatefulWidget {
   final bool? hasBorderColor;
   final bool? hasClearButton;
   final String title;
+  final Icon? titleIcon;
   final double borderRadius;
   final double? cursorHeight;
   final Color? cursorColor;
@@ -55,11 +56,11 @@ class WTextField extends StatefulWidget {
   final ValueChanged<bool>? onFocusChange;
   final Border? border;
   final Color? borderColor;
-  final bool? floatingLabel; // yangi parametr
+  final bool? floatingLabel;
   final bool? isDense;
 
   const WTextField({
-
+    this.titleIcon,
     this.validator,
     this.onFocusChange,
     this.controller,
@@ -128,6 +129,7 @@ class _WTextFieldState extends State<WTextField>
   bool focused = false;
   bool hasText = false;
   late AnimationController controller;
+  String? errorMessage;
 
   @override
   void initState() {
@@ -162,9 +164,15 @@ class _WTextFieldState extends State<WTextField>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (widget.title.isNotEmpty)
-            Text(
-              widget.title,
-              style: widget.titleTextStyle ?? theme.textTheme.displayMedium,
+            Row(
+              spacing: 5,
+              children: [
+                widget.titleIcon ?? SizedBox(),
+                Text(
+                  widget.title,
+                  style: AppTextStyles.s14w800.copyWith(color: AppColors.white),
+                ),
+              ],
             ),
           SizedBox(
             height:
@@ -182,7 +190,7 @@ class _WTextFieldState extends State<WTextField>
                     blurRadius: 60,
                     spreadRadius: 5,
                     offset: Offset(12, 30),
-                    color: AppColors.blue,
+                    color: AppColors.black,
                   ),
                 ],
                 borderRadius: BorderRadius.circular(32),
@@ -194,8 +202,16 @@ class _WTextFieldState extends State<WTextField>
                   ClipRRect(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                     child: TextFormField(
-                      
-                      validator: widget.validator,
+                      validator: (value) {
+                        if (widget.validator != null) {
+                          final result = widget.validator!(value);
+                          setState(() {
+                            errorMessage = result;
+                          });
+                          return result;
+                        }
+                        return null;
+                      },
                       readOnly: widget.readonly ?? false,
                       onTap: widget.onTap ?? () {},
                       textAlign: widget.textAlign,
@@ -220,7 +236,11 @@ class _WTextFieldState extends State<WTextField>
                         }
                       },
                       focusNode: focusNode,
-                      style: widget.textStyle ?? AppTextStyles.s14w600,
+                      style:
+                          widget.textStyle ??
+                          AppTextStyles.s14w600.copyWith(
+                            color: AppColors.white,
+                          ),
                       decoration: InputDecoration(
                         isDense: widget.isDense,
                         border: OutlineInputBorder(
@@ -228,8 +248,8 @@ class _WTextFieldState extends State<WTextField>
                           borderSide: BorderSide(
                             width: 1,
                             color:
-                                widget.hasError
-                                    ? theme.colorScheme.error
+                                errorMessage != null
+                                    ? Colors.red
                                     : AppColors.black,
                           ),
                         ),
@@ -269,7 +289,7 @@ class _WTextFieldState extends State<WTextField>
                                 )
                                 : null,
                         prefixIcon: widget.prefix,
-                        fillColor: widget.fillColor ?? Colors.transparent,
+                        fillColor: widget.fillColor ?? AppColors.black,
                         contentPadding: widget.contentPadding,
                         disabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
@@ -278,13 +298,9 @@ class _WTextFieldState extends State<WTextField>
                           borderSide: BorderSide(
                             width: 1,
                             color:
-                                widget.hasBorderColor != null &&
-                                        !widget.hasBorderColor!
-                                    ? widget.borderColor ?? AppColors.
-                                    black
-                                    : widget.hasError
+                                errorMessage != null
                                     ? Colors.red
-                                    : AppColors.black,
+                                    : widget.borderColor ?? AppColors.gray,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
@@ -294,12 +310,9 @@ class _WTextFieldState extends State<WTextField>
                           borderSide: BorderSide(
                             width: 1,
                             color:
-                                widget.hasBorderColor != null &&
-                                        !widget.hasBorderColor!
-                                    ? widget.borderColor ?? AppColors.black
-                                    : widget.hasError
-                                    ? Theme.of(context).colorScheme.error
-                                    : AppColors.black,
+                                errorMessage != null
+                                    ? Colors.red
+                                    : widget.borderColor ?? AppColors.gray,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -309,13 +322,22 @@ class _WTextFieldState extends State<WTextField>
                           borderSide: BorderSide(
                             width: 1,
                             color:
-                                widget.hasBorderColor != null &&
-                                        !widget.hasBorderColor!
-                                    ? widget.borderColor ?? AppColors.blue
-                                    : widget.hasError
-                                    ? Theme.of(context).colorScheme.error
-                                    : AppColors.black,
+                                errorMessage != null
+                                    ? Colors.red
+                                    : AppColors.white,
                           ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            widget.borderRadius,
+                          ),
+                          borderSide: BorderSide(width: 1, color: Colors.red),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            widget.borderRadius,
+                          ),
+                          borderSide: BorderSide(width: 1, color: Colors.red),
                         ),
                       ),
                     ),
@@ -324,6 +346,14 @@ class _WTextFieldState extends State<WTextField>
               ),
             ),
           ),
+          if (errorMessage != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 5, left: 15),
+              child: Text(
+                errorMessage!,
+                style: AppTextStyles.s12w400.copyWith(color: AppColors.gray),
+              ),
+            ),
         ],
       ),
     );

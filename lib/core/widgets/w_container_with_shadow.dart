@@ -39,6 +39,9 @@ class WContainerWithShadow extends StatelessWidget {
       margin: margin,
       clipBehavior: clipBehavior,
       decoration: BoxDecoration(
+        border: border ?? Border.all(
+          color: AppColors.white
+        ),
         shape: shape ?? BoxShape.rectangle,
         color: color,
         borderRadius: borderRadius ?? BorderRadius.circular(12.w),

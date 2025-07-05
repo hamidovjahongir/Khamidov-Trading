@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trading_app/core/extensions/num_extensions.dart';
-import 'package:trading_app/features/auth/presentation/pages/splash_screen.dart';
+import 'package:trading_app/core/routes/router.dart';
+import 'package:trading_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:trading_app/features/auth/presentation/cubits/auth_cubits.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:trading_app/features/auth/presentation/cubits/forget_password_cubit.dart';
+import 'package:trading_app/features/auth/presentation/pages/register_screen.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
 }
 
@@ -12,9 +21,17 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeUtilsExtension.instance.init(context);
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => AuthBloc()),
+        BlocProvider(create: (_) => ToggleCubit()),
+        BlocProvider(create: (_) => PasswordVisibilityCubit()),
+        BlocProvider(create: (_) => ForgetPasswordCubit()),
+      ],
+      child: MaterialApp.router(
+        routerConfig: appRouter,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

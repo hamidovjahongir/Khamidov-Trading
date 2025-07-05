@@ -65,7 +65,7 @@ class AppTextStyles {
       fontSize: size.toDouble(),
       fontWeight: weight,
       fontFamily: _fontFamily,
-      color: AppColors.black,
+      color: AppColors.white,
     );
   }
 }

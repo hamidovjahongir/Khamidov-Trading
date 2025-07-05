@@ -6,14 +6,13 @@ class AppImages {
   static const String arrowDown = 'assets/svgs/Arrow.svg';
   static const String google = '${_svgsBase}Google Logo.svg';
   static const String apple = '${_svgsBase}Apple Logo.svg';
-  
   static const String edit = '${_svgsBase}edit.svg';
   static const String sun = '${_svgsBase}Sun.svg';
   static const String location = '${_svgsBase}Location Arrow.svg';
   static const String headset = '${_svgsBase}Headset.svg';
   static const String list = '${_svgsBase}List.svg';
+  static const String pinpng = '${_svgsBase}pinpng.svg';
 
-  
   // NavigationBar
   static const String home = '${_svgsBase}Home1.svg';
   static const String home_ = '${_svgsBase}Home2.svg';
@@ -30,4 +29,6 @@ class AppImages {
   static const String rocket = '${_imagesBase}Rocket (right side view).png';
   static const String trueIcon = '${_imagesBase}True 2 1.png';
   static const String lockIcon = '${_imagesBase}27.png';
+  static const String mask = '${_imagesBase}Mask group.png';
 }
+

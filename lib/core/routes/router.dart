@@ -9,12 +9,16 @@ import 'package:trading_app/features/course/presentation/pages/course_screen.dar
 import 'package:trading_app/features/home/presentation/page/home_screen.dart';
 import 'package:trading_app/features/payment/presentation/pages/payment_screen.dart';
 import 'package:trading_app/features/premium/presentation/pages/premium_video_screen.dart';
+import 'package:trading_app/features/profile/presentation/pages/about_us_screen.dart';
+import 'package:trading_app/features/profile/presentation/pages/edit_profile_screen.dart';
+import 'package:trading_app/features/profile/presentation/pages/office_screen.dart';
 import 'package:trading_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:trading_app/features/main_screen.dart';
+import 'package:trading_app/features/profile/presentation/pages/support_screen.dart';
 
 /// GoRouter konfiguratsiyasi
 final GoRouter appRouter = GoRouter(
-  initialLocation: AppRoutesNames.splash,
+  initialLocation: AppRoutesNames.profile,
   debugLogDiagnostics: true,
 
   // Redirect funksiyasi - Foydalanuvchi holatini tekshirish uchun
@@ -49,6 +53,11 @@ final GoRouter appRouter = GoRouter(
       name: AppRoutesNames.splash,
       builder: (context, state) => const SplashScreen(),
     ),
+    // GoRoute(
+    //   path: AppRoutesNames.test,
+    //   name: AppRoutesNames.test,
+    //   builder: (context, state) => const Sdkf(),
+    // ),
 
     // 🔐 AUTHENTICATION ROUTES
     GoRoute(
@@ -69,6 +78,29 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const ForgetPasswordScreen(),
     ),
 
+    GoRoute(
+      path: AppRoutesNames.editProfile,
+      name: AppRoutesNames.editProfile,
+      builder: (context, state) => const EditProfileScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.officeLocation,
+      name: AppRoutesNames.officeLocation,
+      builder: (context, state) => const OfficeScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.support,
+      name: AppRoutesNames.support,
+      builder: (context, state) => const SupportScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.aboutUs,
+      name: AppRoutesNames.aboutUs,
+      builder: (context, state) => const AboutUsScreen(),
+    ),
     // ✅ MAIN SHELL ROUTE (Bottom Navigation)
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -139,9 +171,8 @@ final GoRouter appRouter = GoRouter(
               path: AppRoutesNames.profile,
               name: AppRoutesNames.profile,
               builder: (context, state) => const ProfileScreen(),
-              routes: [
-                // Profile ichidagi sub-routes
-              ],
+
+              routes: [],
             ),
           ],
         ),

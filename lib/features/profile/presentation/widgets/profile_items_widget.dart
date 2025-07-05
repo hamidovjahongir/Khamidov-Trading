@@ -1,129 +1,114 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
-// import '../../../../core/constants/app_images.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_switch/flutter_switch.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trading_app/core/constants/app_textstyles.dart';
+import 'package:trading_app/core/routes/route_names.dart';
+import '../../../../core/constants/app_images.dart';
 
-// class ProfileItems extends StatefulWidget {
-//   final bool isAccount;
-//   final int index;
-//   const ProfileItems({super.key, required this.index, this.isAccount = false});
+class ProfileItems extends StatefulWidget {
+  final int index;
+  const ProfileItems({super.key, required this.index});
 
-//   @override
-//   State<ProfileItems> createState() => _ProfileItemsState();
-// }
+  @override
+  State<ProfileItems> createState() => _ProfileItemsState();
+}
 
-// class _ProfileItemsState extends State<ProfileItems> {
-//   bool isSwitch = true;
-//   @override
-//   Widget build(BuildContext context) {
-//     final List<Map<String, dynamic>> items = [
-//       {
-//         'icon': AppImages.  ,
-//         'title': 'Account',
-//         'onTap': () {
-//           AppRouter.pushNamed(context, AppRouter.account);
-//         },
-//       },
-//       {'icon': AppImages.push, 'title': 'Push Notifications', 'onTap': () {}},
-//       {
-//         'icon': AppImages.about,
-//         'title': 'Terms & Conditions',
-//         'onTap': () {
-//           AppRouter.pushNamed(context, AppRouter.terms);
-//         },
-//       },
-//       {
-//         'icon': AppImages.about,
-//         'title': 'About',
-//         'onTap': () {
-//           AppRouter.pushNamed(context, AppRouter.about);
-//         },
-//       },
-//       {
-//         'icon': AppImages.logOut,
-//         'title': 'Log Out',
-//         'onTap': () {
-//           AppRouter.pushNamed(context, AppRouter.login);
-//         },
-//       },
-//       {
-//         'icon': AppImages.lock,
-//         'title': 'Change Password',
-//         'onTap': () {
-//           debugPrint('Log Out tapped');
-//         },
-//       },
-//       {
-//         'icon': AppImages.mail,
-//         'title': 'email@email.com',
-//         'onTap': () {
-//           debugPrint('Log Out tapped');
-//         },
-//       },
-//     ];
-//     final item = items[widget.index];
-//     return InkWell(
-//       onTap: item["onTap"],
-//       child: Container(
-//         width: double.infinity,
-//         color: Colors.white,
-//         child: Column(
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 16),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   Row(
-//                     spacing: 10,
-//                     children: [
-//                       SvgPicture.asset(
-//                         item["icon"],
-//                         width: 16,
-//                         height: 16,
-//                         fit: BoxFit.cover,
-//                       ),
-//                       Text(item["title"], style: AppTextStyles.bodySmallMedium),
-//                     ],
-//                   ),
-//                   if (widget.index == 1)
-//                     FlutterSwitch(
-//                       activeColor: Colors.black,
-//                       height: 20,
-//                       width: 32,
-//                       value: isSwitch,
-//                       onToggle: (val) {
-//                         setState(() {
-//                           isSwitch = val;
-//                         });
-//                       },
-//                       toggleSize: 13.0,
-//                     )
-//                   else if (widget.index == 4)
-//                     const SizedBox.shrink()
-//                   else
-//                     SvgPicture.asset(
-//                       AppImages.next,
-//                       width: 24,
-//                       height: 24,
-//                       fit: BoxFit.cover,
-//                     ),
-//                 ],
-//               ),
-//             ),
-//             SizedBox(height: 20),
-//             Align(
-//               alignment: Alignment.centerRight,
-//               child: Container(
-//                 clipBehavior: Clip.none,
-//                 width: MediaQuery.of(context).size.width * 0.90,
-//                 color: AppColors.lightGrey,
-//                 height: 1,
-//               ),
-//             ),
-//             SizedBox(height: 20),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+class _ProfileItemsState extends State<ProfileItems> {
+  ValueNotifier<bool> isSwitch = ValueNotifier(false);
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> items = [
+      {
+        'icon': AppImages.edit,
+        'title': 'Edit profile',
+        'onTap': () {
+          context.pushNamed(AppRoutesNames.editProfile);
+        },
+      },
+
+      {
+        'icon': AppImages.location,
+        'title': 'Ofis manzili',
+        'onTap': () {
+          context.push(AppRoutesNames.officeLocation);
+        },
+      },
+
+      {
+        'icon': AppImages.headset,
+        'title': 'Qo’llab quvvatlash',
+        'onTap': () {
+          context.push(AppRoutesNames.support);
+        },
+      },
+      {
+        'icon': AppImages.list,
+        'title': 'Biz haqimizda',
+        'onTap': () {
+          context.push(AppRoutesNames.aboutUs);
+        },
+      },
+
+      {
+        'icon': AppImages.sun,
+        'title': 'Dark theme',
+        'onTap': () {
+          context.push(AppRoutesNames.aboutUs);
+        },
+      },
+    ];
+    final item = items[widget.index];
+    return GestureDetector(
+      onTap: item["onTap"],
+      child: Container(
+        width: double.infinity,
+        // color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    spacing: 10,
+                    children: [
+                      SvgPicture.asset(
+                        item["icon"],
+                        width: 16,
+                        height: 16,
+                        fit: BoxFit.cover,
+                      ),
+                      Text(item["title"], style: AppTextStyles.s20w700),
+                    ],
+                  ),
+                  if (widget.index == 4)
+                    ValueListenableBuilder(
+                      valueListenable: isSwitch,
+                      builder: (context, value, child) {
+                        return FlutterSwitch(
+                          toggleSize: 20,
+                          width: 50,
+                          height: 30,
+                          value: value,
+                          onToggle: (val) {
+                            isSwitch.value = val;
+                          },
+                        );
+                      },
+                    )
+                  else if (widget.index == 4)
+                    const SizedBox.shrink(),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+
+            SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}

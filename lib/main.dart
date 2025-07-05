@@ -6,7 +6,6 @@ import 'package:trading_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:trading_app/features/auth/presentation/cubits/auth_cubits.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trading_app/features/auth/presentation/cubits/forget_password_cubit.dart';
-import 'package:trading_app/features/auth/presentation/pages/register_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {

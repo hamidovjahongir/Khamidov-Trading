@@ -25,4 +25,7 @@ class AppRoutesNames {
   static const String paymentRouteName = 'payment';
   static const String profileRouteName = 'profile';
   static const String test = '/test';
+
+  // Documentation
+  static const String documentation = '/documentation';
 }

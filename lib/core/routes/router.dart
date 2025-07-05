@@ -6,6 +6,7 @@ import 'package:trading_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:trading_app/features/auth/presentation/pages/register_screen.dart';
 import 'package:trading_app/features/auth/presentation/pages/splash_screen.dart';
 import 'package:trading_app/features/course/presentation/pages/course_screen.dart';
+import 'package:trading_app/features/documentation/presentation/screens/documentation_screen.dart';
 import 'package:trading_app/features/home/presentation/page/home_screen.dart';
 import 'package:trading_app/features/payment/presentation/pages/payment_screen.dart';
 import 'package:trading_app/features/premium/presentation/pages/premium_video_screen.dart';
@@ -18,7 +19,7 @@ import 'package:trading_app/features/profile/presentation/pages/support_screen.d
 
 /// GoRouter konfiguratsiyasi
 final GoRouter appRouter = GoRouter(
-  initialLocation: AppRoutesNames.profile,
+  initialLocation: AppRoutesNames.documentation,
   debugLogDiagnostics: true,
 
   // Redirect funksiyasi - Foydalanuvchi holatini tekshirish uchun
@@ -77,36 +78,33 @@ final GoRouter appRouter = GoRouter(
       name: AppRoutesNames.forgetPassword,
       builder: (context, state) => const ForgetPasswordScreen(),
     ),
-
     GoRoute(
-      path: AppRoutesNames.editProfile,
-      name: AppRoutesNames.editProfile,
-      builder: (context, state) => const EditProfileScreen(),
+      path: AppRoutesNames.documentation,
+      name: AppRoutesNames.documentation,
+      builder: (context, state) => const DocumentationScreen(),
     ),
 
-    GoRoute(
-      path: AppRoutesNames.officeLocation,
-      name: AppRoutesNames.officeLocation,
-      builder: (context, state) => const OfficeScreen(),
-    ),
-
-    GoRoute(
-      path: AppRoutesNames.support,
-      name: AppRoutesNames.support,
-      builder: (context, state) => const SupportScreen(),
-    ),
-
-    GoRoute(
-      path: AppRoutesNames.aboutUs,
-      name: AppRoutesNames.aboutUs,
-      builder: (context, state) => const AboutUsScreen(),
-    ),
     // ✅ MAIN SHELL ROUTE (Bottom Navigation)
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainScreen(navigationShell: navigationShell);
       },
       branches: [
+        //keyin uchirilsin
+        // StatefulShellBranch(
+        //   routes: [
+        //     GoRoute(
+        //       path: AppRoutesNames.documentation,
+        //       name: AppRoutesNames.documentation,
+        //       builder: (context, state) => const DocumentationScreen(),
+        //       routes: [
+        //         // Bu yerda home ichidagi sub-routes qo'shishingiz mumkin
+        //         // Masalan: home/profile, home/settings va h.k.
+        //       ],
+        //     ),
+        //   ],
+        // ),
+
         // 🏠 HOME BRANCH
         StatefulShellBranch(
           routes: [

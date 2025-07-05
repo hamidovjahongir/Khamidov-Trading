@@ -17,5 +17,7 @@ class AppRoutesNames {
   static const String premiumVideoRouteName = 'premiumVideo';
   static const String courseRouteName = 'course';
   static const String paymentRouteName = 'payment';
-  static const String profileRouteName = 'profile';
+
+  // Documentation
+  static const String documentation = '/documentation';
 }

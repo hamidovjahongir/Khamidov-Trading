@@ -62,59 +62,50 @@ class _ProfileItemsState extends State<ProfileItems> {
     final item = items[widget.index];
     return GestureDetector(
       onTap: item["onTap"],
-      child: Container(
-        width: double.infinity,
-
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    spacing: 10,
-                    children: [
-                      SvgPicture.asset(
-                        item["icon"],
-                        width: 16,
-                        height: 16,
-                        fit: BoxFit.cover,
-                      ),
-                      Text(item["title"], style: AppTextStyles.s20w700),
-                    ],
-                  ),
-                  if (widget.index == 4)
-                    ValueListenableBuilder(
-                      valueListenable: isSwitch,
-                      builder: (context, value, child) {
-                        return FlutterSwitch(
-                          toggleSize: 20,
-                          width: 50,
-                          height: 30,
-                          value: value,
-                          onToggle: (val) {
-                            isSwitch.value = val;
-                          },
-                        );
-                      },
-                    )
-                  else if (widget.index == 4)
-                    const SizedBox.shrink(),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            widget.index == 4
-                ? SizedBox()
-                : Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 2,
-                  color: Color(0xff212433),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  spacing: 10,
+                  children: [
+                    SvgPicture.asset(item["icon"], fit: BoxFit.cover),
+                    Text(item["title"], style: AppTextStyles.s20w700),
+                  ],
                 ),
-            SizedBox(height: 20),
-          ],
-        ),
+                if (widget.index == 4)
+                  ValueListenableBuilder(
+                    valueListenable: isSwitch,
+                    builder: (context, value, child) {
+                      return FlutterSwitch(
+                        toggleSize: 20,
+                        width: 50,
+                        height: 30,
+                        value: value,
+                        onToggle: (val) {
+                          isSwitch.value = val;
+                        },
+                      );
+                    },
+                  )
+                else if (widget.index == 4)
+                  const SizedBox.shrink(),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          widget.index == 4
+              ? SizedBox()
+              : Container(
+                width: MediaQuery.of(context).size.width,
+                height: 2,
+                color: Color(0xff212433),
+              ),
+          SizedBox(height: 20),
+        ],
       ),
     );
   }

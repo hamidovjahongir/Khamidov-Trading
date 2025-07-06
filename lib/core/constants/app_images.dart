@@ -38,8 +38,8 @@ class AppImages {
   static const String lockIcon = '${_imagesBase}27.png';
   static const String officeLocation = '${_imagesBase}Rectangle 822.png';
   static const String messages = '${_imagesBase}Messages.png';
-    static const String mask = '${_imagesBase}Mask group.png';
+  static const String mask = '${_imagesBase}Mask group.png';
 
+  static const String backLogoImage = '${_imagesBase}Group 1.png';
 
-  
 }

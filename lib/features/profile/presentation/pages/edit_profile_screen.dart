@@ -41,140 +41,147 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       body: WCustomBackground(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              WCustomAppBar(
-                title: 'Profil',
-                leadingVoidCallback: () => context.pop(),
-              ),
-              30.height,
-              Column(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        width: 105.w,
-                        height: 105.h,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.blue),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.asset(AppImages.mask, fit: BoxFit.cover),
-                        ),
-                      ),
-                      Positioned(
-                        top: 75,
-                        left: 75,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Container(
-                            width: 25.w,
-                            height: 25.h,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 2,
-                                color: AppColors.barColor,
-                              ),
-                              borderRadius: BorderRadius.circular(100),
-                              color: AppColors.blue,
+          child: SingleChildScrollView( 
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                WCustomAppBar(
+                  title: 'Profil',
+                  leadingVoidCallback: () => context.pop(),
+                ),
+                30.height,
+                Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          width: 105.w,
+                          height: 105.h,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.blue),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.asset(
+                              AppImages.mask,
+                              fit: BoxFit.cover,
                             ),
-                            child: Center(
-                              child: Icon(
-                                Icons.edit,
-                                color: AppColors.white,
-                                size: 20,
+                          ),
+                        ),
+                        Positioned(
+                          top: 75,
+                          left: 75,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Container(
+                              width: 25.w,
+                              height: 25.h,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 2,
+                                  color: AppColors.barColor,
+                                ),
+                                borderRadius: BorderRadius.circular(100),
+                                color: AppColors.blue,
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.edit,
+                                  color: AppColors.white,
+                                  size: 20,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  20.height,
-                  Text('Khamidov', style: AppTextStyles.s20w400),
-                  Text(
-                    'Tolibov Suxrobjon',
-                    style: AppTextStyles.s14w400.copyWith(
-                      color: AppColors.white.withOpacity(0.5),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-              20.height,
-              Column(
-                spacing: 12,
-                children: [
-                  WTextField(
-                    prefix: WAppBarWidget(
-                      color: AppColors.backBlackColor,
-                      child: Center(child: SvgPicture.asset(AppImages.person)),
-                    ).paddingSymmetric(horizontal: 10, vertical: 10),
-                    hintText: 'Ism Familiya',
-                    borderRadius: 15,
-                  ),
-                  WTextField(
-                    keyBoardType: TextInputType.emailAddress,
-                    prefix: WAppBarWidget(
-                      color: AppColors.backBlackColor,
-                      child: Center(child: SvgPicture.asset(AppImages.email)),
-                    ).paddingSymmetric(horizontal: 10, vertical: 10),
-                    hintText: 'namuna@gmail.com',
-                    borderRadius: 15,
-                  ),
-                  WTextField(
-                    keyBoardType: TextInputType.number,
-
-                    prefix: WAppBarWidget(
-                      color: AppColors.backBlackColor,
-                      child: Center(child: SvgPicture.asset(AppImages.phone)),
-                    ).paddingSymmetric(horizontal: 10, vertical: 10),
-                    hintText: '+998 (XX) XXX-XX-XX',
-                    borderRadius: 15,
-                  ),
-                  WTextField(
-                    controller: dateController,
-                    keyBoardType: TextInputType.datetime,
-                    readonly: true,
-                    onTap: _pickDate,
-                    prefix: WAppBarWidget(
-                      color: AppColors.backBlackColor,
-                      child: Center(
-                        child: SvgPicture.asset(AppImages.calendar),
+                    20.height,
+                    Text('Khamidov', style: AppTextStyles.s20w400),
+                    Text(
+                      'Tolibov Suxrobjon',
+                      style: AppTextStyles.s14w400.copyWith(
+                        color: AppColors.white.withOpacity(0.5),
                       ),
-                    ).paddingSymmetric(horizontal: 10, vertical: 10),
-                    hintText: 'kk-oo-yyyy',
-                    borderRadius: 15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(),
-                      Container(
-                        width: 160,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: AppColors.backBlackColor,
+                    ),
+                  ],
+                ),
+                20.height,
+                Column(
+                  spacing: 12,
+                  children: [
+                    WTextField(
+                      prefix: WAppBarWidget(
+                        color: AppColors.backBlackColor,
+                        child: Center(
+                          child: SvgPicture.asset(AppImages.person),
                         ),
-                        child: Row(
-                          spacing: 5,
-                          children: [
-                            SvgPicture.asset(AppImages.delate),
-                            Text(
-                              'Akkauntni o’chirish',
-                              style: AppTextStyles.s14w400,
-                            ),
-                          ],
-                        ).paddingSymmetric(horizontal: 5),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                      ).paddingSymmetric(horizontal: 10, vertical: 10),
+                      hintText: 'Ism Familiya',
+                      borderRadius: 15,
+                    ),
+                    WTextField(
+                      keyBoardType: TextInputType.emailAddress,
+                      prefix: WAppBarWidget(
+                        color: AppColors.backBlackColor,
+                        child: Center(child: SvgPicture.asset(AppImages.email)),
+                      ).paddingSymmetric(horizontal: 10, vertical: 10),
+                      hintText: 'namuna@gmail.com',
+                      borderRadius: 15,
+                    ),
+                    WTextField(
+                      keyBoardType: TextInputType.number,
+
+                      prefix: WAppBarWidget(
+                        color: AppColors.backBlackColor,
+                        child: Center(child: SvgPicture.asset(AppImages.phone)),
+                      ).paddingSymmetric(horizontal: 10, vertical: 10),
+                      hintText: '+998 (XX) XXX-XX-XX',
+                      borderRadius: 15,
+                    ),
+                    WTextField(
+                      controller: dateController,
+                      keyBoardType: TextInputType.datetime,
+                      readonly: true,
+                      onTap: _pickDate,
+                      prefix: WAppBarWidget(
+                        color: AppColors.backBlackColor,
+                        child: Center(
+                          child: SvgPicture.asset(AppImages.calendar),
+                        ),
+                      ).paddingSymmetric(horizontal: 10, vertical: 10),
+                      hintText: 'kk-oo-yyyy',
+                      borderRadius: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(),
+                        Container(
+                          width: 160,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.backBlackColor,
+                          ),
+                          child: Row(
+                            spacing: 5,
+                            children: [
+                              SvgPicture.asset(AppImages.delate),
+                              Text(
+                                'Akkauntni o’chirish',
+                                style: AppTextStyles.s14w400,
+                              ),
+                            ],
+                          ).paddingSymmetric(horizontal: 5),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

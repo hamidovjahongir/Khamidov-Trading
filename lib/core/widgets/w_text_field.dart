@@ -59,7 +59,6 @@ class WTextField extends StatefulWidget {
   final bool? floatingLabel;
   final bool? isDense;
   final Color? focusedColor;
-  
 
   const WTextField({
     this.focusedColor,
@@ -189,12 +188,12 @@ class _WTextFieldState extends State<WTextField>
             child: DecoratedBox(
               decoration: BoxDecoration(
                 boxShadow: [
-                  BoxShadow(
-                    blurRadius: 60,
-                    spreadRadius: 5,
-                    offset: Offset(12, 30),
-                    color: AppColors.black,
-                  ),
+                  // BoxShadow(
+                  //   blurRadius: 60,
+                  //   spreadRadius: 5,
+                  //   offset: Offset(12, 30),
+                  //   color: AppColors.black,
+                  // ),
                 ],
                 borderRadius: BorderRadius.circular(32),
                 color: AppColors.white,
@@ -327,7 +326,7 @@ class _WTextFieldState extends State<WTextField>
                             color:
                                 errorMessage != null
                                     ? Colors.red
-                                    : widget.focusedColor ?? AppColors.white
+                                    : widget.focusedColor ?? AppColors.white,
                           ),
                         ),
                         errorBorder: OutlineInputBorder(

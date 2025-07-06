@@ -36,38 +36,32 @@ class _SupportScreenState extends State<SupportScreen> {
                 title: 'Qo’llab quvvatlash',
               ),
               20.height,
+              Align(child: Image.asset(AppImages.messages, fit: BoxFit.cover)),
               WGradientContainer(
                 padding: EdgeInsets.zero,
-                // width: mediaQueryWidth,
                 height: 230,
                 colors: [AppColors.backBlackColor2, AppColors.lightBlue],
-                child: Stack(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Positioned(
-                      child: Image.asset(AppImages.messages, fit: BoxFit.cover),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Xatolik va takliflar haqida bizga murojaat qiling',
-                          style: AppTextStyles.s24w400,
-                          textAlign: TextAlign.center,
-                        ).paddingSymmetric(horizontal: 20),
-                        Text(
-                          'Ilovadagi barcha muammolarni birgalikda hal qilamiz, murojaat qilganingiz uchun rahmat!',
+                    Text(
+                      'Xatolik va takliflar haqida bizga murojaat qiling',
+                      style: AppTextStyles.s24w400,
+                      textAlign: TextAlign.center,
+                    ).paddingSymmetric(horizontal: 20),
+                    Text(
+                      'Ilovadagi barcha muammolarni birgalikda hal qilamiz, murojaat qilganingiz uchun rahmat!',
 
-                          style: AppTextStyles.s16w700.copyWith(
-                            color: AppColors.white.withOpacity(0.5),
-                          ),
-                          textAlign: TextAlign.center,
-                        ).paddingSymmetric(horizontal: 10),
-                      ],
-                    ),
+                      style: AppTextStyles.s16w700.copyWith(
+                        color: AppColors.white.withOpacity(0.5),
+                      ),
+                      textAlign: TextAlign.center,
+                    ).paddingSymmetric(horizontal: 10),
                   ],
                 ).paddingSymmetric(horizontal: 10, vertical: 10),
               ),
+
               15.height,
               Column(
                 spacing: 10,
@@ -76,6 +70,7 @@ class _SupportScreenState extends State<SupportScreen> {
                     focusedColor: AppColors.black,
 
                     borderColor: AppColors.black,
+                    
                     readonly: true,
                     keyBoardType: TextInputType.emailAddress,
                     prefix: WAppBarWidget(

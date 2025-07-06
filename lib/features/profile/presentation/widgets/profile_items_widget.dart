@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:go_router/go_router.dart';
+import 'package:trading_app/core/constants/app_colors.dart';
 import 'package:trading_app/core/constants/app_textstyles.dart';
 import 'package:trading_app/core/routes/route_names.dart';
 import '../../../../core/constants/app_images.dart';
@@ -63,7 +64,7 @@ class _ProfileItemsState extends State<ProfileItems> {
       onTap: item["onTap"],
       child: Container(
         width: double.infinity,
-        // color: Colors.white,
+
         child: Column(
           children: [
             Padding(
@@ -104,7 +105,13 @@ class _ProfileItemsState extends State<ProfileItems> {
               ),
             ),
             SizedBox(height: 20),
-
+            widget.index == 4
+                ? SizedBox()
+                : Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 2,
+                  color: Color(0xff212433),
+                ),
             SizedBox(height: 20),
           ],
         ),

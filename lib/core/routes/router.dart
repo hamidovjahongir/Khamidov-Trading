@@ -19,7 +19,8 @@ import 'package:trading_app/features/profile/presentation/pages/support_screen.d
 
 /// GoRouter konfiguratsiyasi
 final GoRouter appRouter = GoRouter(
-  initialLocation: AppRoutesNames.documentation,
+  initialLocation: AppRoutesNames.home,
+
   debugLogDiagnostics: true,
 
   // Redirect funksiyasi - Foydalanuvchi holatini tekshirish uchun
@@ -84,6 +85,29 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const DocumentationScreen(),
     ),
 
+    GoRoute(
+      path: AppRoutesNames.editProfile,
+      name: AppRoutesNames.editProfile,
+      builder: (context, state) => const EditProfileScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.officeLocation,
+      name: AppRoutesNames.officeLocation,
+      builder: (context, state) => const OfficeScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.support,
+      name: AppRoutesNames.support,
+      builder: (context, state) => const SupportScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.aboutUs,
+      name: AppRoutesNames.aboutUs,
+      builder: (context, state) => const AboutUsScreen(),
+    ),
     // ✅ MAIN SHELL ROUTE (Bottom Navigation)
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

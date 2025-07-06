@@ -58,8 +58,11 @@ class WTextField extends StatefulWidget {
   final Color? borderColor;
   final bool? floatingLabel;
   final bool? isDense;
+  final Color? focusedColor;
+  
 
   const WTextField({
+    this.focusedColor,
     this.titleIcon,
     this.validator,
     this.onFocusChange,
@@ -324,7 +327,7 @@ class _WTextFieldState extends State<WTextField>
                             color:
                                 errorMessage != null
                                     ? Colors.red
-                                    : AppColors.white,
+                                    : widget.focusedColor ?? AppColors.white
                           ),
                         ),
                         errorBorder: OutlineInputBorder(

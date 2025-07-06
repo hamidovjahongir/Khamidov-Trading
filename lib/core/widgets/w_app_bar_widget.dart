@@ -16,7 +16,8 @@ class WAppBarWidget extends StatefulWidget {
     this.height,
     this.radius,
     this.color,
-    this.child, this.onTap,
+    this.child,
+    this.onTap,
   });
 
   @override
@@ -29,11 +30,11 @@ class _WAppBarWidgetState extends State<WAppBarWidget> {
     return GestureDetector(
       onTap: widget.onTap ?? () {},
       child: Container(
-        width: widget.width ?? 50,
-        height: widget.height ?? 50,
+        width: widget.width ?? 40,
+        height: widget.height ?? 40,
         decoration: BoxDecoration(
           color: widget.color ?? AppColors.black,
-          borderRadius: BorderRadius.circular(widget.radius ?? 20),
+          borderRadius: BorderRadius.circular(widget.radius ?? 10),
         ),
         child: Center(child: widget.child ?? SizedBox()),
       ),

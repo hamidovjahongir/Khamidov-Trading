@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trading_app/core/constants/app_colors.dart';
+import 'package:trading_app/core/widgets/w_custom_background.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,8 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
-      body: Column(children: [Text("asldkjfl;ak")]),
+      body: WCustomBackground(child: Column(children: [Text("asldkjfl;ak")])),
     );
   }
 }

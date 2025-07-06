@@ -28,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: NavigationBar(
         labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         indicatorColor: Colors.transparent,
-        backgroundColor: AppColors.black,
+        backgroundColor: AppColors.barColor,
         selectedIndex: widget.navigationShell.currentIndex,
         onDestinationSelected: _onTap,
         destinations: [

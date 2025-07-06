@@ -8,8 +8,18 @@ import 'w_app_bar_widget.dart';
 class WCustomAppBar extends StatelessWidget {
   final String? title;
   final bool back;
+  final bool showActionIcon;
+  final VoidCallback? leadingVoidCallback;
+  final VoidCallback? actionVoidCallback;
 
-  const WCustomAppBar({super.key, this.title, this.back = true});
+  const WCustomAppBar({
+    super.key,
+    this.title,
+    this.back = true,
+    this.showActionIcon = true,
+    this.leadingVoidCallback,
+    this.actionVoidCallback,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +29,10 @@ class WCustomAppBar extends StatelessWidget {
         back
             ? WAppBarWidget(
               child: Center(
-                child: Icon(Icons.arrow_back_ios_new, color: AppColors.white),
+                child: IconButton(
+                  onPressed: leadingVoidCallback ?? () {},
+                  icon: Icon(Icons.arrow_back_ios_new, color: AppColors.white),
+                ),
               ),
             )
             : Expanded(child: Text(title ?? '', style: AppTextStyles.s20w400)),
@@ -30,7 +43,17 @@ class WCustomAppBar extends StatelessWidget {
               ),
             )
             : const Spacer(),
-        WAppBarWidget(child: Center(child: SvgPicture.asset(AppImages.logout))),
+
+        showActionIcon
+            ? WAppBarWidget(
+              child: Center(
+                child: GestureDetector(
+                  onTap: actionVoidCallback ?? () {},
+                  child: SvgPicture.asset(AppImages.logout),
+                ),
+              ),
+            )
+            : SizedBox(),
       ],
     );
   }

@@ -27,7 +27,7 @@ class UserInfoWidget extends StatelessWidget {
     final mediaQueryWidth = MediaQuery.of(context).size.width;
     return Container(
       width: width ?? mediaQueryWidth,
-      height: 110.h,
+      height: 100.h,
       decoration: BoxDecoration(
         color: color ?? AppColors.black,
         borderRadius: BorderRadius.circular(15),

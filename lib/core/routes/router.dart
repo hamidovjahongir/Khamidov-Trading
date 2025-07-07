@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trading_app/core/routes/route_names.dart';
+import 'package:trading_app/features/auth/presentation/pages/check_screen.dart';
 import 'package:trading_app/features/auth/presentation/pages/forget_password_screen.dart';
 import 'package:trading_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:trading_app/features/auth/presentation/pages/register_screen.dart';
 import 'package:trading_app/features/auth/presentation/pages/splash_screen.dart';
-import 'package:trading_app/features/course/presentation/pages/course_screen.dart';
 import 'package:trading_app/features/documentation/presentation/screens/documentation_screen.dart';
 import 'package:trading_app/features/home/presentation/page/home_screen.dart';
 import 'package:trading_app/features/payment/presentation/pages/payment_screen.dart';
@@ -55,11 +55,11 @@ final GoRouter appRouter = GoRouter(
       name: AppRoutesNames.splash,
       builder: (context, state) => const SplashScreen(),
     ),
-    // GoRoute(
-    //   path: AppRoutesNames.test,
-    //   name: AppRoutesNames.test,
-    //   builder: (context, state) => const Sdkf(),
-    // ),
+    GoRoute(
+      path: AppRoutesNames.check,
+      name: AppRoutesNames.check,
+      builder: (context, state) => const CheckScreen(),
+    ),
 
     // 🔐 AUTHENTICATION ROUTES
     GoRoute(
@@ -78,11 +78,6 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutesNames.forgetPassword,
       name: AppRoutesNames.forgetPassword,
       builder: (context, state) => const ForgetPasswordScreen(),
-    ),
-    GoRoute(
-      path: AppRoutesNames.documentation,
-      name: AppRoutesNames.documentation,
-      builder: (context, state) => const DocumentationScreen(),
     ),
 
     GoRoute(
@@ -162,9 +157,9 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: AppRoutesNames.course,
-              name: AppRoutesNames.course,
-              builder: (context, state) => const CourseScreen(),
+              path: AppRoutesNames.documentation,
+              name: AppRoutesNames.documentation,
+              builder: (context, state) => const DocumentationScreen(),
               routes: [
                 // Course ichidagi sub-routes
               ],

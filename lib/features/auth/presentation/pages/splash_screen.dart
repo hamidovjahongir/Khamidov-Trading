@@ -8,6 +8,7 @@ import 'package:trading_app/core/routes/route_names.dart';
 import 'package:trading_app/core/widgets/w_container_with_shadow.dart';
 import 'package:trading_app/core/widgets/w_scale_animation.dart';
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -16,6 +17,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     final mediaQueryWidth = MediaQuery.of(context).size.width;

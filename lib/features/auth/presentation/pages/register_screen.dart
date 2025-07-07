@@ -16,6 +16,9 @@ import 'package:trading_app/features/auth/data/model/auth_model.dart';
 import 'package:trading_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:trading_app/features/auth/presentation/cubits/auth_cubits.dart';
 import 'package:trading_app/features/auth/presentation/widget/security_modal_widget.dart';
+import 'package:trading_app/features/profile/data/model/user_model.dart';
+import 'package:trading_app/features/profile/presentation/bloc/user_bloc.dart';
+import 'package:trading_app/features/profile/presentation/bloc/user_event.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -111,6 +114,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             title: 'MuvaffaqiyatliRoyxatdan otdingiz',
                             page: '/home',
                           ),
+                    );
+
+                    context.read<UserBloc>().add(
+                      AddUserEvent(
+                        UserModel(
+                          email: emailController.text,
+                          fullName: nameController.text,
+                          birthDate: '',
+                          image: '',
+                          phoneNumber: '',
+                        ),
+                      ),
                     );
                   }
                 },

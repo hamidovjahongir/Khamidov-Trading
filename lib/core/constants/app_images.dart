@@ -11,7 +11,7 @@ class AppImages {
   static const String location = '${_svgsBase}Location Arrow.svg';
   static const String headset = '${_svgsBase}Headset.svg';
   static const String list = '${_svgsBase}List.svg';
-  static const String pinpng = '${_svgsBase}pinpng.svg';
+  static const String pin = '${_svgsBase}pinpng.svg';
   static const String calendar = '${_svgsBase}calendar.svg';
   static const String phone = '${_svgsBase}phone.svg';
   static const String person = '${_svgsBase}person.svg';
@@ -31,6 +31,8 @@ class AppImages {
   static const String profile_ = '${_svgsBase}User2.svg';
   static const String logout = '${_svgsBase}logout.svg';
   static const String telegram = '${_svgsBase}telegram.svg';
+  static const String clock = '${_svgsBase}Clock 1.svg';
+  static const String dollar = '${_svgsBase}Dollar.svg';
 
   // image
   static const String rocket = '${_imagesBase}Rocket (right side view).png';
@@ -39,7 +41,14 @@ class AppImages {
   static const String officeLocation = '${_imagesBase}Rectangle 822.png';
   static const String messages = '${_imagesBase}Messages.png';
   static const String mask = '${_imagesBase}Mask group.png';
-
   static const String backLogoImage = '${_imagesBase}Group 1.png';
+  static const String offlinee = '${_imagesBase}offlinee.png';
+  static const String ledger = '${_imagesBase}ledger.png';
+  static const String atOnline = '${_imagesBase}AT Online 1.png';
+  static const String candles = '${_imagesBase}Candles (left side view).png';
+  static const String hardware =
+      '${_imagesBase}Hardware Wallet (left side view).png';
+  static const String telegramCloud = '${_imagesBase}telegram-cloud.png';
+  static const String bannerAcademy = '${_imagesBase}Banner (Academy) (1) 2.png';
 
 }

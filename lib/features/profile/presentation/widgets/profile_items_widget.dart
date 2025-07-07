@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trading_app/core/constants/app_colors.dart';
 import 'package:trading_app/core/constants/app_textstyles.dart';
 import 'package:trading_app/core/routes/route_names.dart';
 import '../../../../core/constants/app_images.dart';

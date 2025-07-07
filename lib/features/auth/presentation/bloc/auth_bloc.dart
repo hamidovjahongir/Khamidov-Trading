@@ -31,7 +31,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final id = await remoteDatasource.checkUser(user.email);
 
       if (id != null) {
-        userLocalRepository.saveUserId(id);
+        await userLocalRepository.saveUserId(id);
+        print("a;sldk;asdkljnf: ${id}");
       }
       emit(AuthSuccess(user));
     } catch (e) {
@@ -43,7 +44,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       final user = await signUpUseCase(event.user);
-
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthFailure(e.toString()));

@@ -27,11 +27,12 @@ class _CheckScreenState extends State<CheckScreen> {
     final user = FirebaseAuth.instance.currentUser;
     final savedToken = await authLocalDatasource.getToken();
     final savedUserId = await userLocalRepository.getUserId();
+    print("lsdkjfn ${savedUserId}");
 
     if (user != null && savedToken != null && savedUserId != null) {
       final newToken = await user.getIdToken(true);
       await authLocalDatasource.saveToken(newToken.toString());
-      await userLocalRepository.saveUserId(user.uid);
+
       context.goNamed(AppRoutesNames.home);
     } else {
       context.goNamed(AppRoutesNames.splash);

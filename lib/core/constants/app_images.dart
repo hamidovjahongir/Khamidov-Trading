@@ -33,6 +33,9 @@ class AppImages {
   static const String telegram = '${_svgsBase}telegram.svg';
   static const String clock = '${_svgsBase}Clock 1.svg';
   static const String dollar = '${_svgsBase}Dollar.svg';
+  static const String error = '${_svgsBase}error.svg';
+  static const String copy = '${_svgsBase}Copy 1.svg';
+
 
   // image
   static const String rocket = '${_imagesBase}Rocket (right side view).png';
@@ -49,6 +52,6 @@ class AppImages {
   static const String hardware =
       '${_imagesBase}Hardware Wallet (left side view).png';
   static const String telegramCloud = '${_imagesBase}telegram-cloud.png';
-  static const String bannerAcademy = '${_imagesBase}Banner (Academy) (1) 2.png';
-
+  static const String bannerAcademy = '${_imagesBase}telegram-cloud.png';
+  static const String bitcoin = '${_imagesBase}Bitcoin.png';
 }

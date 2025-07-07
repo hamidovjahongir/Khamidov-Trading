@@ -8,7 +8,8 @@ import 'package:trading_app/features/auth/presentation/pages/register_screen.dar
 import 'package:trading_app/features/auth/presentation/pages/splash_screen.dart';
 import 'package:trading_app/features/documentation/presentation/screens/documentation_screen.dart';
 import 'package:trading_app/features/home/presentation/page/home_screen.dart';
-import 'package:trading_app/features/payment/presentation/pages/payment_screen.dart';
+import 'package:trading_app/features/payment/presentation/screen/payment_method.dart';
+import 'package:trading_app/features/payment/presentation/screen/payment_screen.dart';
 import 'package:trading_app/features/premium/presentation/pages/premium_video_screen.dart';
 import 'package:trading_app/features/profile/presentation/pages/about_us_screen.dart';
 import 'package:trading_app/features/profile/presentation/pages/edit_profile_screen.dart';
@@ -19,7 +20,7 @@ import 'package:trading_app/features/profile/presentation/pages/support_screen.d
 
 /// GoRouter konfiguratsiyasi
 final GoRouter appRouter = GoRouter(
-  initialLocation: AppRoutesNames.home,
+  initialLocation: AppRoutesNames.check,
 
   debugLogDiagnostics: true,
 
@@ -54,6 +55,12 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutesNames.splash,
       name: AppRoutesNames.splash,
       builder: (context, state) => const SplashScreen(),
+    ),
+
+    GoRoute(
+      path: AppRoutesNames.paymentMethod,
+      name: AppRoutesNames.paymentMethod,
+      builder: (context, state) => const PaymentMethod(),
     ),
     GoRoute(
       path: AppRoutesNames.check,

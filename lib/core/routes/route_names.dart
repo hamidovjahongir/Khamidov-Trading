@@ -12,6 +12,7 @@ class AppRoutesNames {
   static const String course = '/course';
   static const String payment = '/payment';
   static const String profile = '/profile';
+  static const String paymentMethod = '/payment-method';
 
   // profile screens
   static const String editProfile = '/profile/edit-profile';

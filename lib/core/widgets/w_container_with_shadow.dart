@@ -14,7 +14,7 @@ class WContainerWithShadow extends StatelessWidget {
   final BoxShape? shape;
   final List<BoxShadow>? shadow;
   final Clip clipBehavior;
-
+  final Color? shadowColor;
   const WContainerWithShadow({
     super.key,
     required this.color,
@@ -28,6 +28,7 @@ class WContainerWithShadow extends StatelessWidget {
     this.shape,
     this.shadow,
     this.clipBehavior = Clip.none,
+    this.shadowColor,
   });
 
   @override
@@ -39,9 +40,7 @@ class WContainerWithShadow extends StatelessWidget {
       margin: margin,
       clipBehavior: clipBehavior,
       decoration: BoxDecoration(
-        border: border ?? Border.all(
-          color: AppColors.white
-        ),
+        border: border ?? Border.all(color: AppColors.white),
         shape: shape ?? BoxShape.rectangle,
         color: color,
         borderRadius: borderRadius ?? BorderRadius.circular(12.w),
@@ -52,7 +51,7 @@ class WContainerWithShadow extends StatelessWidget {
                 blurRadius: 30,
                 spreadRadius: 0,
                 offset: Offset(0, 0),
-                color: AppColors.blue,
+                color: shadowColor ?? AppColors.blue,
               ),
             ],
       ),

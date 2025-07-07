@@ -7,6 +7,8 @@ import 'package:trading_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:trading_app/features/auth/presentation/cubits/auth_cubits.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trading_app/features/auth/presentation/cubits/forget_password_cubit.dart';
+import 'package:trading_app/features/home/data/repository/post_repository.dart';
+import 'package:trading_app/features/home/presentation/bloc/post_bloc.dart';
 import 'package:trading_app/features/profile/data/repository/user_local_repository.dart';
 import 'package:trading_app/features/profile/data/repository/user_repository_impl.dart';
 import 'package:trading_app/features/profile/domain/repository/user_repository.dart';
@@ -17,10 +19,11 @@ final dioClient = DioClient();
 final UserRepository userRepository = UserRepositoryImpl(dioClient);
 final UserLocalRepository userLocalRepository = UserLocalRepository();
 
+final PostRepository repository = PostRepository();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  
+
   runApp(const MainApp());
 }
 
@@ -36,6 +39,7 @@ class MainApp extends StatelessWidget {
           create: (_) => UserBloc(userRepository, userLocalRepository),
         ),
         BlocProvider(create: (_) => AuthBloc()),
+        BlocProvider(create: (_) => PostBloc(repository)),
         BlocProvider(create: (_) => ToggleCubit()),
         BlocProvider(create: (_) => PasswordVisibilityCubit()),
         BlocProvider(create: (_) => ForgetPasswordCubit()),

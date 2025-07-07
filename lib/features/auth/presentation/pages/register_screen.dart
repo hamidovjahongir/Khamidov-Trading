@@ -299,8 +299,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: mediaQueryHeight * 0.18),
                       WRichText(
                         onTap: () => context.go(AppRoutesNames.login),
-                        text1: 'Akkauntingiz yoqmi?',
-                        text2: ' Ro’yxatdan o’tish',
+                        text1: 'Akkauntingiz bormi?',
+                        text2: ' Kirish',
                       ),
                       50.height,
                     ],

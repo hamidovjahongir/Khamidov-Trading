@@ -257,8 +257,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: mediaQueryHeight * 0.27),
                       WRichText(
                         onTap: () => context.go(AppRoutesNames.register),
-                        text1: 'Akkauntingiz bormi?',
-                        text2: ' Kirish',
+                        text1: 'Akkauntingiz yoqmi?',
+                        text2: ' Ro’yxatdan o’tish',
                       ),
                       30.height,
                     ],

@@ -94,6 +94,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                     );
                   }
+                  if (state is AuthFailure) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.message),
+                        backgroundColor: Colors.red,
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  }
                 },
                 builder: (context, state) {
                   return Column(

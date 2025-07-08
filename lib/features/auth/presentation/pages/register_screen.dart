@@ -111,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       builder:
                           (context) => SecurityModalWidget(
                             image: Image.asset(AppImages.trueIcon),
-                            title: 'MuvaffaqiyatliRoyxatdan otdingiz',
+                            title: 'Muvaffaqiyatli royxatdan otdingiz',
                             page: '/home',
                           ),
                     );
@@ -125,6 +125,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           image: '',
                           phoneNumber: '',
                         ),
+                      ),
+                    );
+                  }
+                  if (state is AuthFailure) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.message),
+                        backgroundColor: Colors.red,
+                        behavior: SnackBarBehavior.floating,
                       ),
                     );
                   }
